@@ -1,8 +1,13 @@
 Problem Name : Social Media Sentiment Analysis.
+
 Ministry/State : Government of Telangana
+
 Problem Code Number : #GTS5
-Technology Stack Used : 
+
+Technology Stack Used :
+
 Team Members:-
+
       1)  Akash Nandi (Team Leader)
           Email id: akashnandi2011@gmail.com
           Github id: https://github.com/royrivnam

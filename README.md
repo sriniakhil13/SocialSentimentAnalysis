@@ -4,7 +4,7 @@ Ministry/State : Government of Telangana
 
 Problem Code Number : #GTS5
 
-Technology Stack Used :
+Technology Stack Used : Machine learning algorithms, Python 
 
 Team Members:-
 

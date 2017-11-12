@@ -1,4 +1,4 @@
-Problem Name : Social Media Sentiment Analysis.
+Problem Statement : Social Media Sentiment Analysis.
 
 Ministry/State : Government of Telangana
 

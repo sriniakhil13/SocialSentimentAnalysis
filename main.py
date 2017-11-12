@@ -29,3 +29,9 @@ def init(self):
     except:
         print("Error: Authentication Failed") #Error occured
 # - 12-NOV-2017 - Swati - added code for authentication on twitter
+
+# + 12-NOV-2017 - Swati - Removing spaces special char symbols using python re module
+def clean_tweet(self, tweet):
+    return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])
+                                |(\w+:\/\/\S+)", " ", tweet).split())
+# - 12-NOV-2017 - Swati - Removing spaces special char symbols using python re module

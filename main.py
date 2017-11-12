@@ -37,6 +37,16 @@ class TwitterClient(object):
         return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
 
     # - 12-NOV-2017 - Swati - Removing spaces special char symbols using python re module
+    def gts(self, tweet):
+    	# create TextBlob object of passed tweet text
+    	analysis = TextBlob(self.clean_tweet(tweet))
+    	# set sentiment using textblob module object
+    	if analysis.sentiment.polarity > 0:
+        	return 'positive'
+    	elif analysis.sentiment.polarity == 0:
+        	return 'neutral'
+    	else:
+        	return 'negative'
     def get_tweets(self, query, count = 10):
 	tweets = [] #empty list to append fetched tweets    
 	# call twitter api to fetch tweets

@@ -57,6 +57,27 @@ class TwitterClient(object):
 	return tweets
 	# print error (if any)
     print("Error : " + str(e))
-
+def main():
+	# creating object of TwitterClient Class
+	api = TwitterClient()
+	# calling function to get tweets
+	tweets = api.get_tweets(query = raw_input("Enter the topic on which you want to do sentiment analysis\n"), count = 200)
+	'''
+	Here count indicates the number of tweets that the api must fetch, which are related to the entered topic
+	'''
+	positive_tweets = []
+	for t in tweets:
+	    if(t['sentiment']=='positive'):
+		positive_tweets.append(t)
+	negative_tweets = []
+	for t in tweets:
+	    if(t['sentiment']=='negative'):
+		negative_tweets.append(t)
+	neutral_tweets = []
+	for t in tweets:
+	    if(t['sentiment']=='neutral'):
+		neutral_tweets.append(t)
+if name == "main":
+	main()
  
 

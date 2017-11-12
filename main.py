@@ -48,25 +48,36 @@ class TwitterClient(object):
     	else:
         	return 'negative'
     def get_tweets(self, query, count = 10):
-	tweets = [] #empty list to append fetched tweets    
-	# call twitter api to fetch tweets
-    fetched_tweets = self.api.search(q = query, count = count)
-	# parsing tweets one by one
-    for tweet in fetched_tweets:
-    # empty dictionary to store required params of a tweet
-    	parsed_tweet = {}
-    	parsed_tweet['text'] = tweet.text
-    # should save sentiment of tweet by calling function
-    	if tweet.retweet_count > 0:
-    	#if tweet has retweets, ensure that it is appended only once
-	    	if parsed_tweet not in tweets:
-        		tweets.append(parsed_tweet)
-        	else:
-        		tweets.append(parsed_tweet)
-	# return parsed tweets
-	return tweets
-	# print error (if any)
-    print("Error : " + str(e))
+
+	tweets = [] #empty list to append fetched tweets	
+
+	try:
+    		# call twitter api to fetch tweets
+    		fetched_tweets = self.api.search(q = query, count = count)
+
+    	# parsing tweets one by one
+    		for tweet in fetched_tweets:
+        # empty dictionary to store required params of a tweet
+        		parsed_tweet = {}
+        		parsed_tweet['text'] = tweet.text
+        # should save sentiment of tweet by calling function
+			parsed_tweet['sentiment'] = self.gts(tweet.text)
+        # appending parsed tweet to tweets list
+        		if tweet.retweet_count > 0:
+           ''' if tweet has retweets, ensure that it is appended only once'''
+            			if parsed_tweet not in tweets:
+               				 tweets.append(parsed_tweet)
+       			else:
+            			tweets.append(parsed_tweet)
+
+    		
+    		return tweets # return parsed tweets
+
+	except tweepy.TweepError as e:
+    		# print error (if any)
+    		print("Error : " + str(e))
+
+
 def main():
 	# creating object of TwitterClient Class
 	api = TwitterClient()
